@@ -1,0 +1,181 @@
+execve("/sbin/modprobe", ["modprobe", "pps_gpio"], [/* 14 vars */]) = 0
+brk(0)                                  = 0x00000000
+uname({sys="Linux", node="raspberrypi", ...}) = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+access("/etc/ld.so.preload", R_OK)      = 0
+open("/etc/ld.so.preload", O_RDONLY)    = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=44, ...}) = 0
+mmap2(NULL, 44, PROT_READ|PROT_WRITE, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+open("/usr/lib/arm-linux-gnueabihf/libcofi_rpi.so", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\270\4\0\0004\0\0\0"..., 512) = 512
+lseek(3, 7276, SEEK_SET)                = 7276
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1080) = 1080
+lseek(3, 7001, SEEK_SET)                = 7001
+read(3, "A.\0\0\0aeabi\0\1$\0\0\0\0056\0\6\6\10\1\t\1\n\2\22\4\24\1\25"..., 47) = 47
+fstat64(3, {st_mode=S_IFREG|0755, st_size=10170, ...}) = 0
+mmap2(NULL, 39740, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x00000000
+mprotect(0x00000000, 28672, PROT_NONE)  = 0
+mmap2(0x00000000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0x00000000
+close(3)                                = 0
+munmap(0x00000000, 44)                  = 0
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=59272, ...}) = 0
+mmap2(NULL, 59272, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libkmod.so.2", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\240$\0\0004\0\0\0"..., 512) = 512
+lseek(3, 78528, SEEK_SET)               = 78528
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1120) = 1120
+lseek(3, 78232, SEEK_SET)               = 78232
+read(3, "A0\0\0\0aeabi\0\1&\0\0\0\0056\0\6\6\10\1\t\1\n\2\22\4\24\1\25"..., 49) = 49
+fstat64(3, {st_mode=S_IFREG|0644, st_size=79648, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+mmap2(NULL, 111004, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x00000000
+mprotect(0x00000000, 28672, PROT_NONE)  = 0
+mmap2(0x00000000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12) = 0x00000000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libgcc_s.so.1", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0P\364\0\0004\0\0\0"..., 512) = 512
+lseek(3, 129288, SEEK_SET)              = 129288
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1160) = 1160
+lseek(3, 128956, SEEK_SET)              = 128956
+read(3, "A2\0\0\0aeabi\0\1(\0\0\0\0056\0\6\6\10\1\t\1\n\2\22\4\24\1\25"..., 51) = 51
+fstat64(3, {st_mode=S_IFREG|0644, st_size=130448, ...}) = 0
+mmap2(NULL, 161780, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x00000000
+mprotect(0x00000000, 28672, PROT_NONE)  = 0
+mmap2(0x00000000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1f) = 0x00000000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libc.so.6", O_RDONLY) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\210y\1\0004\0\0\0"..., 512) = 512
+lseek(3, 1198880, SEEK_SET)             = 1198880
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1360) = 1360
+lseek(3, 1198444, SEEK_SET)             = 1198444
+read(3, "A.\0\0\0aeabi\0\1$\0\0\0\0056\0\6\6\10\1\t\1\n\2\22\4\24\1\25"..., 47) = 47
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1200240, ...}) = 0
+mmap2(NULL, 1242400, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x00000000
+mprotect(0x00000000, 28672, PROT_NONE)  = 0
+mmap2(0x00000000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x122) = 0x00000000
+mmap2(0x00000000, 9504, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x00000000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+set_tls(0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000) = 0
+mprotect(0x00000000, 8192, PROT_READ)   = 0
+mprotect(0x00000000, 4096, PROT_READ)   = 0
+mprotect(0x00000000, 4096, PROT_READ)   = 0
+mprotect(0x00000000, 4096, PROT_READ)   = 0
+munmap(0x00000000, 59272)               = 0
+brk(0)                                  = 0x00000000
+brk(0x00000000)                         = 0x00000000
+uname({sys="Linux", node="raspberrypi", ...}) = 0
+stat64("/etc/modprobe.d", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+open("/etc/modprobe.d", O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY|O_CLOEXEC) = 3
+fcntl64(3, F_GETFD)                     = 0x1 (flags FD_CLOEXEC)
+getdents64(3, /* 6 entries */, 32768)   = 208
+newfstatat(3, "ipv6.conf", {st_mode=S_IFREG|0644, st_size=65, ...}, 0) = 0
+newfstatat(3, "fbdev-blacklist.conf", {st_mode=S_IFREG|0644, st_size=456, ...}, 0) = 0
+newfstatat(3, "alsa-base-blacklist.conf", {st_mode=S_IFREG|0644, st_size=229, ...}, 0) = 0
+newfstatat(3, "alsa-base.conf", {st_mode=S_IFREG|0644, st_size=1186, ...}, 0) = 0
+getdents64(3, /* 0 entries */, 32768)   = 0
+close(3)                                = 0
+stat64("/run/modprobe.d", 0x00000000)   = -1 ENOENT (No such file or directory)
+stat64("/lib/modprobe.d", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+open("/lib/modprobe.d", O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY|O_CLOEXEC) = 3
+getdents64(3, /* 3 entries */, 32768)   = 80
+newfstatat(3, "aliases.conf", {st_mode=S_IFREG|0644, st_size=4816, ...}, 0) = 0
+getdents64(3, /* 0 entries */, 32768)   = 0
+close(3)                                = 0
+open("/lib/modprobe.d/aliases.conf", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fcntl64(3, F_GETFL)                     = 0x20000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(3, {st_mode=S_IFREG|0644, st_size=4816, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "# These are the standard aliases"..., 4096) = 4096
+read(3, "################\n#alias bt-proto"..., 4096) = 720
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x00000000, 4096)                = 0
+open("/etc/modprobe.d/alsa-base-blacklist.conf", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fcntl64(3, F_GETFL)                     = 0x20000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(3, {st_mode=S_IFREG|0644, st_size=229, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "# Uncomment these entries in ord"..., 4096) = 229
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x00000000, 4096)                = 0
+open("/etc/modprobe.d/alsa-base.conf", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fcntl64(3, F_GETFL)                     = 0x20000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(3, {st_mode=S_IFREG|0644, st_size=1186, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "# autoloader aliases\ninstall sou"..., 4096) = 1186
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x00000000, 4096)                = 0
+open("/etc/modprobe.d/fbdev-blacklist.conf", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fcntl64(3, F_GETFL)                     = 0x20000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(3, {st_mode=S_IFREG|0644, st_size=456, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "# This file blacklists most old-"..., 4096) = 456
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x00000000, 4096)                = 0
+open("/etc/modprobe.d/ipv6.conf", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fcntl64(3, F_GETFL)                     = 0x20000 (flags O_RDONLY|O_LARGEFILE)
+fstat64(3, {st_mode=S_IFREG|0644, st_size=65, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x00000000
+_llseek(3, 0, [0], SEEK_CUR)            = 0
+read(3, "# Don't load ipv6 by default\nali"..., 4096) = 65
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x00000000, 4096)                = 0
+open("/proc/cmdline", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+read(3, "dma.dmachans=0x7f35 bcm2708_fb.f"..., 4095) = 421
+read(3, "", 3674)                       = 0
+close(3)                                = 0
+open("/lib/modules/3.18.11-v7+/modules.dep.bin", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=188031, ...}) = 0
+mmap2(NULL, 188031, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+open("/lib/modules/3.18.11-v7+/modules.alias.bin", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=434055, ...}) = 0
+mmap2(NULL, 434055, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+open("/lib/modules/3.18.11-v7+/modules.symbols.bin", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=173945, ...}) = 0
+mmap2(NULL, 173945, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+open("/lib/modules/3.18.11-v7+/modules.builtin.bin", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5319, ...}) = 0
+mmap2(NULL, 5319, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+close(3)                                = 0
+stat64("/lib/modules/3.18.11-v7+/kernel/drivers/pps/pps_core.ko", {st_mode=S_IFREG|0644, st_size=18900, ...}) = 0
+open("/sys/module/pps_gpio/initstate", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/sys/module/pps_gpio", 0x00000000) = -1 ENOENT (No such file or directory)
+open("/sys/module/pps_core/initstate", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/sys/module/pps_core", 0x00000000) = -1 ENOENT (No such file or directory)
+open("/lib/modules/3.18.11-v7+/kernel/drivers/pps/pps_core.ko", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=18900, ...}) = 0
+mmap2(NULL, 18900, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+init_module(0x00000000, 18900, "")      = 0
+munmap(0x00000000, 18900)               = 0
+close(3)                                = 0
+open("/sys/module/pps_gpio/initstate", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/sys/module/pps_gpio", 0x00000000) = -1 ENOENT (No such file or directory)
+open("/lib/modules/3.18.11-v7+/kernel/drivers/pps/clients/pps-gpio.ko", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=8735, ...}) = 0
+mmap2(NULL, 8735, PROT_READ, MAP_PRIVATE, 3, 0) = 0x00000000
+init_module(0x00000000, 8735, "")       = 0
+munmap(0x00000000, 8735)                = 0
+close(3)                                = 0
+munmap(0x00000000, 188031)              = 0
+munmap(0x00000000, 434055)              = 0
+munmap(0x00000000, 173945)              = 0
+munmap(0x00000000, 5319)                = 0
+exit_group(0)                           = ?
