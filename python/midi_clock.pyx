@@ -20,22 +20,12 @@ def main():
     def send_start():
         midiout.send_message([250])
 
-    def send_midi_clock_primitive(tempo):
-        start_time = time.time() # maybe change to absolute time later
-        period = (60.0/tempo)/24.0
-        epsilon = 0.001
-    
-        while True:
-            next_pulse_time = start_time + (np.floor((time.time()-start_time)/period) + 1) * period
-            if next_pulse_time - time.time() < epsilon:
-                midiout.send_message([248])
-                time.sleep(epsilon*2)
-            else:
-                time.sleep(0.001)
     def send_midi_clock(tempo):
-        period = (60.0/tempo)/24.0
+        cdef float period
+        cdef double start_time, now, next_pulse_time
         start_time = time.time() # maybe change to absolute time later
-        lookahead = 0.002
+        period = (60.0/tempo)/24.0
+        lookahead = 0.004
     
         while True:
             now = time.time()
@@ -46,15 +36,6 @@ def main():
             else:
                 time.sleep(0.001)
 
-    def start_on_beat(tempo):
-        threshold = 0.001
-        period = (60.0/tempo)
-        now = time.time()
-        next_quarter_note_time = (np.floor(now/period) + 1) * period
-        while next_quarter_note_time - time.time() > threshold:
-            time.sleep(0.001)
-        send_midi_clock(tempo)
-    
     def start_on_measure(tempo):
         threshold = 0.001
         period = (60.0/tempo) * 4
@@ -63,7 +44,7 @@ def main():
         while next_measure_time - time.time() > threshold:
             time.sleep(0.001)
 #        midiout.send_message([250])
-        send_midi_clock_primitive(tempo)
+        send_midi_clock(tempo)
 
     start_on_measure(120)
 
