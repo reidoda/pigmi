@@ -26,18 +26,12 @@ void cleanup(int s)
 
 int main( int argc, char *argv[])
 {
-    if (argc < 4)
+    if (argc < 2)
     {
-        std::cout << "Usage: midiclock <tempo> <my ip> <remote ip 1> <remote ip 2> ..." << std::endl;
+        std::cout << "Usage: midiclock <tempo>" << std::endl;
         return 0;
     }
     double tempo = atof(argv[1]);
-    std::string local_ip = argv[2];
-    std::vector<std::string> remote_ips;
-    for (int i = 3; i < argc; i++)
-    {
-        remote_ips.push_back(argv[i]);
-    }
 
     signal(SIGINT,cleanup);
     std::vector<unsigned char> clock;
