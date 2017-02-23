@@ -12,7 +12,7 @@ The `midiclock-old` program controls the starting of MIDI devices. It quantizes 
 4. To start the midi clock type `global_metronome/bin/midiclock-old <tempo>` where `<tempo>` is the desired tempo. *MIDI clock* will be sent immediately, followed by a *MIDI start* message that is timed to be sent at the start of the next Global Metronome measure. 
 
 # Troubleshooting
-If your device starts playing immediately rather than waiting for the start of the next measure, it may be set to play immediately upon receiving **MIDI clock messages**, rather than waiting for a **MIDI start** message. We're currently unsure if this is a widespread problem, so please let us know if you experience this. 
+If your device starts playing immediately rather than waiting for the start of the next measure, it may be set to play immediately upon receiving *MIDI clock messages*, rather than waiting for a *MIDI start* message. We're currently unsure if this is a widespread problem, so please let us know if you experience this. 
 
 To check if your device's clock is properly connected to the GPS signal enter `ntpq -p` and look for the line that begins with **oPPS**. You should see something like the following:
 ```
@@ -25,7 +25,7 @@ oPPS(0)          .PPS.            0 l    4    8  377    0.000   -0.002   0.002
 -blue.1e400.net  109.229.128.40   3 u   15   16  377   87.155    3.661   2.155
 ```
 
-The important column is *reach*, which shold be at 377. *Delay*, *offset* and *jitter* are in milliseconds and should be less than 1. 
+The important column is *reach*, which tells us how strong the PPS signal is (from the point of view of NTP). It should be at 377. *Delay*, *offset* and *jitter* are in milliseconds and should be less than 1. 
 
 # How to hear your collaborators
 We are using JamKazam as the audio data platform for PIGMI use. It's free and comes with a suite of tools to troubleshoot network performance and connectivity. Go to their site and follow the directions there. 
