@@ -62,7 +62,7 @@ int main( int argc, char *argv[])
     bool initialized = false;
     bool start_sent = false;
     double threshold = 0.0001;
-    int sleep_period_in_micros = 50;
+    int sleep_period_in_micros = 1;
 
 
     gettimeofday(&now,NULL);
@@ -74,6 +74,8 @@ int main( int argc, char *argv[])
         if (!initialized)
         {
             gettimeofday(&start_time,NULL);
+            midiout->sendMessage(&start);
+            midiout->sendMessage(&stop);
             start_time_in_sec = start_time.tv_sec + start_time.tv_usec / 1000000.0;
             initialized = true;
         }
@@ -86,11 +88,13 @@ int main( int argc, char *argv[])
             midiout->sendMessage(&start);
             start_sent = true;
         }
+
         if (now_in_sec > start_time_in_sec + (i * clock_period) - threshold)
         {
-            printf("%f\n",now_in_sec);
+//            printf("%f\n",now_in_sec);
             midiout->sendMessage(&clock);
-            while(now_in_sec > start_time_in_sec + (i * clock_period) - threshold) {i++;;}
+            i++;
+            //while(now_in_sec > start_time_in_sec + (i * clock_period) - threshold) {i++;;}
         }
         usleep(sleep_period_in_micros);
     }

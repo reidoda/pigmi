@@ -4,6 +4,9 @@ midiclock:
 midiclock-old:
 	g++-4.8 -std=c++11 midiclock-old.cpp -lrtmidi -lrt -o ../bin/midiclock-old 
 
+midiclock-old-opt:
+	g++-4.8 -O3 -std=c++11 midiclock-old.cpp -lrtmidi -lrt -o ../bin/midiclock-old-opt
+
 testgps:
 	g++-4.8 -std=c++11 testgps.cpp -o ../bin/testgps
 
