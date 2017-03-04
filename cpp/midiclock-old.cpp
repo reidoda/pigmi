@@ -7,6 +7,7 @@
 #include <sys/time.h>
 #include <cmath>
 #include <csignal>
+#include <wiringPi.h>
 
 // this must be a global variable to clean up properly after kill signal
 RtMidiOut *midiout = new RtMidiOut();
@@ -44,6 +45,9 @@ int main( int argc, char *argv[])
     double clock_period = beat_period/24.0;
     //printf("period: %f\n",period);
 
+    wiringPiSetup();
+    pinMode(5, OUTPUT);
+
     struct timeval start_time;
     double start_time_in_sec;
     struct timeval now;
@@ -63,6 +67,7 @@ int main( int argc, char *argv[])
     bool start_sent = false;
     double threshold = 0.0001;
     int sleep_period_in_micros = 1;
+    double next_tick_time;
 
 
     gettimeofday(&now,NULL);
@@ -83,6 +88,7 @@ int main( int argc, char *argv[])
         gettimeofday(&now,NULL);
         now_in_sec = now.tv_sec + now.tv_usec / 1000000.0;
 
+
         if (now_in_sec > midi_start_time - threshold && !start_sent)
         {
             midiout->sendMessage(&start);
@@ -96,6 +102,15 @@ int main( int argc, char *argv[])
             i++;
             //while(now_in_sec > start_time_in_sec + (i * clock_period) - threshold) {i++;;}
         }
+
+        // this outputs a tick through gpio pin 24 that can be used to guage MIDI drift
+        next_tick_time = (floor(now_in_sec / beat_period ) + 1) * beat_period;
+        if (now_in_sec > next_tick_time - threshold)
+        {
+            digitalWrite(5,HIGH);
+            digitalWrite(5,LOW);
+        }
+
         usleep(sleep_period_in_micros);
     }
     return 0;
