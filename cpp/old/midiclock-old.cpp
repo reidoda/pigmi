@@ -7,6 +7,7 @@
 #include <sys/time.h>
 #include <cmath>
 #include <csignal>
+#include <wiringPi.h>
 
 enum class MidiClockState {stop, stopped, start, running};
 
@@ -15,13 +16,15 @@ class MidiClock
     public:
         MidiClock(double the_tempo = 120.0)
         {
-            tempo = the_tempo;
+            set_tempo(the_tempo);
             midi_clock.push_back(248);
             midi_start.push_back(250);
             midi_stop.push_back(252);
             beat_period = (60.0/tempo);
             clock_period = beat_period/24.0;
             midiout = new RtMidiOut();
+            wiringPiSetup();
+            pinMode(5, OUTPUT);
         }
 
         void cleanup()
@@ -48,7 +51,8 @@ class MidiClock
             bool initialized = false;
             bool start_sent = false;
             double threshold = 0.0001;
-            int sleep_period_in_micros = 50;
+            int sleep_period_in_micros = 1;
+            double next_tick_time;
 
             now_in_sec = this->now(); 
             double midi_start_time = (floor(now_in_sec / (beat_period * 4)) + 1) * (beat_period * 4);
@@ -58,6 +62,8 @@ class MidiClock
                 if (!initialized)
                 {
                     start_time_in_sec = this->now(); 
+                    midiout->sendMessage(&midi_clock);
+                    midiout->sendMessage(&midi_stop);
                     initialized = true;
                 }
 
@@ -70,16 +76,35 @@ class MidiClock
                 }
                 if (now_in_sec > start_time_in_sec + (i * clock_period) - threshold)
                 {
-                    printf("%f\n",now_in_sec);
                     midiout->sendMessage(&midi_clock);
-                    while(now_in_sec > start_time_in_sec + (i * clock_period) - threshold) {i++;;}
+                    i++;
+                    // while(now_in_sec > start_time_in_sec + (i * clock_period) - threshold) {i++;;}
                 }
+
+                next_tick_time = (floor(now_in_sec / beat_period ) + 1) * beat_period;
+                if (now_in_sec > next_tick_time - threshold)
+                {
+                    digitalWrite(5,HIGH);
+                    digitalWrite(5,LOW);
+                }
+
                 usleep(sleep_period_in_micros);
             }
         }
 
-        double tempo;
-        MidiClockState state = MidiClockState::stopped;
+        double get_tempo() { return tempo; }
+
+        void set_tempo(double new_tempo) 
+        { 
+            tempo = new_tempo; 
+            beat_period = (60.0/tempo);
+            clock_period = beat_period/24.0;
+        }
+
+        MidiClockState get_clock_state() { return state; }
+
+        void set_clock_state(MidiClockState new_state) { state = new_state; }
+
 
     private:
 
@@ -90,6 +115,8 @@ class MidiClock
             return now.tv_sec + now.tv_usec / 1000000.0;
         }
 
+        MidiClockState state = MidiClockState::stopped;
+        double tempo;
         RtMidiOut *midiout = new RtMidiOut();
         double beat_period;
         double clock_period;
@@ -122,6 +149,7 @@ int main( int argc, char *argv[])
     }
     double tempo = atof(argv[1]);
     signal(SIGINT,cleanup);
+    midiclock->set_tempo(tempo);
     midiclock->run();
     return 0;
 }

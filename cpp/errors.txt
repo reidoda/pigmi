@@ -1,0 +1,71 @@
+pigmi_logger.cpp:28:1: error: 'pigmi_logger' does not name a type
+ pigmi_logger::pigme_logger(boost::asio::io_service& io_service, std::string the_local_ip)
+ ^
+pigmi_logger.cpp:39:13: error: 'pigmi_logger' has not been declared
+ std::string pigmi_logger::make_timestamp(Precision precision = Precision::nano)
+             ^
+pigmi_logger.cpp:59:13: error: 'pigmi_logger' has not been declared
+ std::string pigmi_logger::exec(const char* cmd) 
+             ^
+pigmi_logger.cpp:71:6: error: 'pigmi_logger' has not been declared
+ void pigmi_logger::start_receive()
+      ^
+pigmi_logger.cpp: In function 'void start_receive()':
+pigmi_logger.cpp:74:5: error: 'socket_' was not declared in this scope
+     socket_.async_receive_from(
+     ^
+pigmi_logger.cpp:75:33: error: 'recv_buffer_' was not declared in this scope
+             boost::asio::buffer(recv_buffer_), remote_endpoint_,
+                                 ^
+pigmi_logger.cpp:75:48: error: 'remote_endpoint_' was not declared in this scope
+             boost::asio::buffer(recv_buffer_), remote_endpoint_,
+                                                ^
+In file included from pigmi_logger.cpp:9:0:
+pigmi_logger.hpp:56:14: error: 'void pigme_logger::handle_receive(const boost::system::error_code&, std::size_t)' is private
+         void handle_receive(const boost::system::error_code& error,
+              ^
+pigmi_logger.cpp:76:40: error: within this context
+             boost::bind(&pigme_logger::handle_receive, this,
+                                        ^
+pigmi_logger.cpp:76:56: error: invalid use of 'this' in non-member function
+             boost::bind(&pigme_logger::handle_receive, this,
+                                                        ^
+pigmi_logger.cpp: At global scope:
+pigmi_logger.cpp:81:6: error: 'pigmi_logger' has not been declared
+ void pigmi_logger::handle_receive(const boost::system::error_code& error,
+      ^
+pigmi_logger.cpp: In function 'void handle_receive(const boost::system::error_code&, std::size_t)':
+pigmi_logger.cpp:91:9: error: 'recv_buffer_' was not declared in this scope
+         recv_buffer_[17] = '\0';
+         ^
+pigmi_logger.cpp:100:9: error: 'log_file' was not declared in this scope
+         log_file << boost::str(
+         ^
+pigmi_logger.cpp:101:72: error: 'local_ip' was not declared in this scope
+                 boost::format("PING, %f, %s, %s, %d\n") % local_time % local_ip % remote_ip % transit_time);
+                                                                        ^
+pigmi_logger.cpp:106:9: error: 'socket_' was not declared in this scope
+         socket_.async_send_to(boost::asio::buffer(*message), remote_endpoint_,
+         ^
+pigmi_logger.cpp:106:62: error: 'remote_endpoint_' was not declared in this scope
+         socket_.async_send_to(boost::asio::buffer(*message), remote_endpoint_,
+                                                              ^
+In file included from pigmi_logger.cpp:9:0:
+pigmi_logger.hpp:59:14: error: 'void pigme_logger::handle_send(boost::shared_ptr<std::basic_string<char> >, const boost::system::error_code&, std::size_t)' is private
+         void handle_send(boost::shared_ptr<std::string> /*message*/,
+              ^
+pigmi_logger.cpp:107:44: error: within this context
+                 boost::bind(&pigme_logger::handle_send, this, message,
+                                            ^
+pigmi_logger.cpp:107:57: error: invalid use of 'this' in non-member function
+                 boost::bind(&pigme_logger::handle_send, this, message,
+                                                         ^
+pigmi_logger.cpp: At global scope:
+pigmi_logger.cpp:115:6: error: 'pigmi_logger' has not been declared
+ void pigmi_logger::handle_send(boost::shared_ptr<std::string> /*message*/,
+      ^
+run_pigmi_logger.cpp:9:26: fatal error: pigmi_logger.h: No such file or directory
+ #include "pigmi_logger.h"
+                          ^
+compilation terminated.
+make: *** [run_pigmi_logger] Error 1
