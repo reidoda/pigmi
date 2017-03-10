@@ -11,6 +11,11 @@ PingSender::PingSender(std::string new_my_ip, std::string new_remote_ip)
     remote_ip = new_remote_ip;
 }
 
+
+//void PingSender::set_local_ip(std::string my_local_ip) { my_ip = my_local_ip; }
+//void PingSender::set_remote_ip(std::string my_remote_ip) { remote_ip = my_local_ip; }
+
+
 std::string PingSender::make_timestamp()
 {
     struct timeval now;
@@ -49,4 +54,30 @@ void PingSender::send_ping()
     {
         std::cerr << e.what() << std::endl;
     }
+}
+
+void PingSender::run()
+{
+    double start_time = now();
+    double send_interval = 5;
+    int ping_count = 0;
+
+    while (true)
+    {
+        if (now() > start_time + ping_count * send_interval)
+        {
+            // std::cout << "Sending ping\n";
+            send_ping();
+            ping_count++;
+        }
+        sleep(1);
+        boost::this_thread::interruption_point();
+    }
+}
+
+double PingSender::now()
+{
+    struct timeval now;
+    gettimeofday(&now,NULL);
+    return now.tv_sec + now.tv_usec / 1000000.0;
 }

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp> 
+#include <boost/thread.hpp>
 
 using boost::asio::ip::udp;
 
@@ -17,8 +18,10 @@ class PingSender
         std::string make_timestamp();
         std::string pad_ip(std::string ip);
         void send_ping();
+        void run();
 
     private:
+        double now();
         std::string my_ip;
         std::string remote_ip;
         std::string port_num = "4694";

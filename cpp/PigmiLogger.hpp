@@ -65,4 +65,7 @@ class PigmiLogger
         boost::array<char, 128> recv_buffer_;
         std::ofstream log_file;
         std::string local_ip;
+        int ping_counter = 0;
+        int ntpq_freq = 5;
+        int port_num = 4694;
 };

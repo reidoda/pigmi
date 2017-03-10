@@ -26,7 +26,7 @@
  */
 
 PigmiLogger::PigmiLogger(boost::asio::io_service& io_service, std::string the_local_ip)
-    : socket_(io_service, udp::endpoint(udp::v4(), 4694))
+    : socket_(io_service, udp::endpoint(udp::v4(), 4694)) 
 {
     start_receive();
     std::string log_path = "../log/" + make_timestamp(Precision::sec) + ".log";
@@ -70,7 +70,6 @@ std::string PigmiLogger::exec(const char* cmd)
 }
 void PigmiLogger::start_receive()
 {
-    //std::cout << "start_receive" << std::endl;
     socket_.async_receive_from(
             boost::asio::buffer(recv_buffer_), remote_endpoint_,
             boost::bind(&PigmiLogger::handle_receive, this,
@@ -81,7 +80,6 @@ void PigmiLogger::start_receive()
 void PigmiLogger::handle_receive(const boost::system::error_code& error,
         std::size_t /*bytes_transferred*/)
 {
-    //std::cout << "handle_receive" << std::endl;
     struct timeval now;
     double local_time;
     gettimeofday(&now, NULL);
@@ -95,10 +93,13 @@ void PigmiLogger::handle_receive(const boost::system::error_code& error,
         std::string remote_ip = recv_buffer_.data()+18;
         boost::algorithm::erase_all(remote_ip, " ");
         double transit_time = local_time - remote_time;
-        std::printf("transit_time: %f", transit_time);
+        std::printf("transit time from remote_ip to me: %f", transit_time);
         std::cout << ", remote_ip: " << remote_ip << std::endl;
         log_file << boost::str(
                 boost::format("PING, %f, %s, %s, %d\n") % local_time % local_ip % remote_ip % transit_time);
+        if (ping_counter++ % ntpq_freq == 0)
+            log_file << boost::str(
+                    boost::format("NTPQ, %f, %s") % local_time % exec("ntpq -p | sed -n 3p"));
         log_file.flush();
         boost::shared_ptr<std::string> message(
                 new std::string(make_timestamp()));

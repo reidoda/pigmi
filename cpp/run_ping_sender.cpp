@@ -22,6 +22,6 @@ int main(int argc, char* argv[])
     std::string remote_ip = argv[1];
     std::string my_ip = argv[2];
     PingSender pingsender(my_ip, remote_ip);
-    pingsender.send_ping();
+    pingsender.run();
     return 0;
 }
