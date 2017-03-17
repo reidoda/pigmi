@@ -33,7 +33,7 @@ The `run_midiclock` program controls the starting of MIDI devices. It quantizes 
 
  ![alt tag](https://raw.githubusercontent.com/brownerthanu/global_metronome/master/img/basic_setup.jpg) 
  
-5. Once you've split the audio signal, set up a delay on your local signal (and not the signal going to JackTrip). This can be done using a delay unit (in the analog world) or a delay effect in a DAW. On the delay unit set the delay repeat/feedback to 0% and set the wet control to 100%. This way we will hear only the delayed signal, a single time. 
+5. Once you've split the audio signal, set up a delay on your local signal (and not the signal going to JackTrip). This can be done using a delay unit (in the analog world) or a delay effect in a DAW. On the delay unit set the delay repeat/feedback to 0% and set the wet control to 100%. This way we will hear only the delayed signal, a single time. We recommend using [Bitwig](https://www.bitwig.com/en/download.html) if you use a DAW, only becase we know it works, it runs on Linux, and has very good Jack integration. The demo is free. If you do use Bitwig, use this [Bitwig project](https://www.dropbox.com/s/qhffmv68pi2u0ms/PIGMI_local_delay_via_Bitwig.bwproject?dl=1). Just activate record for the only track in the project. 
 6. When you start playing audio with your collaborator, start with a simple beat such as hihats on a quarter note. Adjust the delay time so that your audio is in line with what you hear. 
 
 We will streamline this process in the future, but for now it's what we have to do. Any suggestions for how improve this process are welcome!  
