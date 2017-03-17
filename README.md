@@ -32,7 +32,10 @@ We began our tests using JamKazam as the audio data platform, but are now using 
 1. Install the [Jack Audio Connection Kit](http://www.jackaudio.org/downloads/)
 2. Install [JackTrip](https://ccrma.stanford.edu/software/jacktrip/)
 3. Set up and test JackTrip. This [document](https://blog.zhdk.ch/zmoduletelematic/files/2014/02/jacktripBasics1.pdf) may help with the proces. One thing to note is that (from a user's perspective) there is no functional difference between a JackTrip server and client. The difference is that you start the server first, and then your partner connects to the server. This will get more complicated when we have more than 2 players. 
-4. You'll need to split your signal to set up a delay for your *local* audio so that it lines up with the audio arriving via JackTrip. You'll need to set up something like this: ![alt tag](https://raw.githubusercontent.com/brownerthanu/global_metronome/master/img/basic_setup.jpg) This can be done by either splitting the signal outside the computer using a mixer or a y-cable, or inside the cable using the Jack router. We recommend using Jack, then routing into a Jack-capable DAW (such as Bitwig). 
+4. You'll need to split your signal to set up a delay for your *local* audio so that it lines up with the audio arriving via JackTrip. You'll need to set up something like the diagram below. This can be done by either splitting the signal outside the computer using a mixer or a y-cable, or inside the cable using the Jack router. We recommend using Jack, then routing into a Jack-capable DAW (such as Bitwig).
+
+ ![alt tag](https://raw.githubusercontent.com/brownerthanu/global_metronome/master/img/basic_setup.jpg) 
+ 
 5. Once you've split the audio signal, set up a delay on your local signal (and not the signal going to JackTrip). This can be done using a delay unit (in the analog world) or a delay effect in a DAW. On the delay unit set the delay repeat/feedback to zero and set the wet control to %100. This way we will hear only a delay signal, once. 
 6. When you start playing audio with your collaborator, start with a simple beat such as hihats on a quarter note. Adjust the delay time so that your audio is in line with what you hear. 
 
