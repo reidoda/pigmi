@@ -25,5 +25,17 @@ The `run_midiclock` program controls the starting of MIDI devices. It quantizes 
  ```
 2. If you think that your MIDI clock might be drifing, the PIGMI outputs a click that is tightly synchronized to the GPS sensor and does not drift from the Global Metronome tempo and phase. You can hear it by attaching alligator clips to physical (not BCM) pins 18 and 39 of the GPIO pins. The signal is strong enough to drive headphones, but you might want to run the signal through a mixer to amplify and hear it better. Because this tick as no latency you might find it happens a few MS before your connected MIDI device, but let it run for 20 minutes and see if the timing relationship between the two devices changes. 
 
-# How to hear your collaborators
-We are using JamKazam as the audio data platform for PIGMI use. It's free and comes with a suite of tools to troubleshoot network performance and connectivity. Go to their site and follow the directions there. 
+# How to hear your collaborators using Jamkazam
+We began our tests using JamKazam as the audio data platform, but are now using JackTrip. It's free and comes with a suite of tools to troubleshoot network performance and connectivity. Go to their site and follow the directions there. 
+
+# How to set up audio using JackTrip (Linux and OS X only)
+1. Install the [Jack Audio Connection Kit](http://www.jackaudio.org/downloads/)
+2. Install [JackTrip](https://ccrma.stanford.edu/software/jacktrip/)
+3. Set up and test JackTrip. This [document](https://blog.zhdk.ch/zmoduletelematic/files/2014/02/jacktripBasics1.pdf) may help with the proces. One thing to note is that (from a user's perspective) there is no functional difference between a JackTrip server and client. The difference is that you start the server first, and then your partner connects to the server. This will get more complicated when we have more than 2 players. 
+4. You'll need to split your signal to set up a delay for your *local* audio so that it lines up with the audio arriving via JackTrip. You'll need to set up something like this: ![alt tag](https://raw.githubusercontent.com/brownerthanu/global_metronome/master/img/basic_setup.jpg) This can be done by either splitting the signal outside the computer using a mixer or a y-cable, or inside the cable using the Jack router. We recommend using Jack, then routing into a Jack-capable DAW (such as Bitwig). 
+5. Once you've split the audio signal, set up a delay on your local signal (and not the signal going to JackTrip). This can be done using a delay unit (in the analog world) or a delay effect in a DAW. On the delay unit set the delay repeat/feedback to zero and set the wet control to %100. This way we will hear only a delay signal, once. 
+6. When you start playing audio with your collaborator, start with a simple beat such as hihats on a quarter note. Adjust the delay time so that your audio is in line with what you hear. 
+
+We will streamline this process in the future, but for now it's what we have to do. Any suggestions for how improve this process are welcome! 
+
+
