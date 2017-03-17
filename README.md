@@ -1,6 +1,10 @@
 # Introduction
 
-The Global Metronome is a technique for synchronizing tempo over long distances using GPS. This repository is in early alpha stages and consists of a number of tools to test whether the Global Metronome approach is viable. The PIGMI (Pi Global Metronome Implementation) is a Raspberry Pi based implementation of the Global Metronome that depends on a custom Raspbian image and the software in this repository. To obtain the Raspbian image, contact the repository owner. 
+The [Global Metronome](http://research.gold.ac.uk/18693/1/OdaFiebrink_NIME2016.pdf) is a method for automatically synchronizing tempo between devices located anywhere on earth. It was created to allow for Internet tempo synchronization and has been shown to enable timing synchronization with accuracy as good or better than devices connected via a physical MIDI cable.
+
+This repository is in early alpha stages and consists of a number of tools to test the strengths and pitfalls of the Global Metronome approach. The PIGMI (Pi Global Metronome Implementation) is a Raspberry Pi based implementation of the Global Metronome that depends on a custom Raspbian image and the software in this repository. To obtain the Raspbian image, contact the repository owner. 
+
+Note: It is not legal to develop a commercial device using this approach. This technology is protected by provision patent \#62443050 (held by Princeton University). However, creating your own device for personal use has been intentionally been left open. 
 
 # How to use the PIGMI as a master MIDI clock
 The `run_midiclock` program controls the starting of MIDI devices. It quantizes the start time of the connected devices so that they start at the beginning of the next Global Metronome 4/4 measure (i.e. similar to how Ableton Live launches clips). Instruction are below:
