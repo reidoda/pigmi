@@ -29,7 +29,7 @@ PigmiLogger::PigmiLogger(boost::asio::io_service& io_service, std::string the_lo
     : socket_(io_service, udp::endpoint(udp::v4(), 4694)) 
 {
     start_receive();
-    std::string log_path = "../log/" + make_timestamp(Precision::sec) + ".log";
+    std::string log_path = "/home/pi/pigmi/log/" + make_timestamp(Precision::sec) + ".log";
     log_file.open(log_path.c_str());
     local_ip = the_local_ip;
 }
