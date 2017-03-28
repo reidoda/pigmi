@@ -1,6 +1,6 @@
 # Introduction
 
-The [Global Metronome](http://research.gold.ac.uk/18693/1/OdaFiebrink_NIME2016.pdf) is a method for automatically synchronizing tempo between devices located anywhere on earth. It was created to allow for Internet tempo synchronization and has been shown to enable timing synchronization with accuracy as good or better than devices connected via a physical MIDI cable.
+A Pi [Global Metronome](http://research.gold.ac.uk/18693/1/OdaFiebrink_NIME2016.pdf) Implementation (PIGMI) is a tool to allow for tempo and MIDI clock sync for performance over the Internet. The Global Metronome is a method for automatically synchronizing tempo between devices located anywhere on earth. It was created to allow for Internet tempo synchronization and has been shown to enable timing synchronization with accuracy as good or better than devices connected via a physical MIDI cable.
 
 This repository is in early alpha stages and consists of a number of tools to test the strengths and pitfalls of the Global Metronome approach. The PIGMI (Pi Global Metronome Implementation) is a Raspberry Pi based implementation of the Global Metronome that depends on a custom Raspbian image and the software in this repository. To obtain the Raspbian image, contact the repository owner. 
 
@@ -11,9 +11,9 @@ The `run_midiclock` program controls the starting of MIDI devices. It quantizes 
 
 1. Plug into out B on your Midisport. 
 2. Log into PIGMI either via the Raspberry Pi desktop or via SSH. 
-2. First check to see that the midiclock program has been built by typing `ls global_metronome/bin`. You should see the file `run_midiclock`.
-3. If the file is not there we need to build it by typing `cd ~/global_metronome/cpp; make run_midiclock`. You may have to install some libraries in order for this to work. 
-4. To start the midi clock type `global_metronome/bin/run_midiclock <tempo> <your public ip> <ip of our collaborator>`. *MIDI clock* will be sent immediately, followed by a *MIDI start* message that is timed to be sent at the start of the next Global Metronome measure. 
+2. First check to see that the midiclock program has been built by typing `ls pigmi/bin`. You should see the file `run_midiclock`.
+3. If the file is not there we need to build it by typing `cd ~/pigmi/cpp; make run_midiclock`. You may have to install some libraries in order for this to work. 
+4. To start the midi clock type `pigmi/bin/run_midiclock <tempo> <your public ip> <ip of our collaborator>`. *MIDI clock* will be sent immediately, followed by a *MIDI start* message that is timed to be sent at the start of the next Global Metronome measure. 
 
 # Troubleshooting
 1. To check if your device's clock is properly connected to the GPS signal enter `ntpq -p` and look for the line that begins with **oPPS**. You should see something like the table below. The important column is *reach*, which tells us how strong the PPS signal is (from the point of view of NTP). It should be at 377. *Delay*, *offset* and *jitter* are in milliseconds and should be less than 1. 
@@ -35,7 +35,7 @@ The `run_midiclock` program controls the starting of MIDI devices. It quantizes 
 3. Set up and test JackTrip. This [document](https://blog.zhdk.ch/zmoduletelematic/files/2014/02/jacktripBasics1.pdf) may help with the proces. One thing to note is that (from a user's perspective) there is no functional difference between a JackTrip server and client. The difference is that you start the server first, and then your partner connects to the server. This will get more complicated when we have more than 2 players. 
 4. You'll need to split your signal to set up a delay for your *local* audio so that it lines up with the audio arriving via JackTrip. You'll need to set up something like the diagram below. This can be done by either splitting the signal outside the computer using a mixer or a y-cable, or inside the cable using the Jack router. We recommend using Jack, then routing into a Jack-capable DAW (such as Bitwig).
 
- ![alt tag](https://raw.githubusercontent.com/brownerthanu/global_metronome/master/img/basic_setup.jpg) 
+ ![alt tag](https://raw.githubusercontent.com/reidoda/pigmi/master/img/basic_setup.jpg) 
  
 5. Once you've split the audio signal, set up a delay on your local signal (and not the signal going to JackTrip). This can be done using a delay unit (in the analog world) or a delay effect in a DAW. On the delay unit set the delay repeat/feedback to 0% and set the wet control to 100%. This way we will hear only the delayed signal, a single time. We recommend using [Bitwig](https://www.bitwig.com/en/download.html) if you use a DAW, only becase we know it works, it runs on Linux, and has very good Jack integration. The demo is free. If you do use Bitwig, use this [Bitwig project](https://www.dropbox.com/s/qhffmv68pi2u0ms/PIGMI_local_delay_via_Bitwig.bwproject?dl=1). Just activate record for the only track in the project. 
 6. When you start playing audio with your collaborator, start with a simple beat such as hihats on a quarter note. Adjust the delay time so that your audio is in line with what you hear. 
