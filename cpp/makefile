@@ -5,6 +5,9 @@ CFLAGS = -O3 -std=c++11
 run_midiclock: PigmiLogger.o MidiClock.o PingSender.o run_midiclock.cpp
 	 $(CC) $(CFLAGS) -I /usr/include/boost -L /usr/lib -lwiringPi -lrtmidi -lrt -lpthread -lboost_system -lboost_thread -o ../bin/run_midiclock MidiClock.o PigmiLogger.o PingSender.o run_midiclock.cpp
 
+run_ping_logger: PigmiLogger.o PingSender.o run_ping_logger.cpp
+	 $(CC) $(CFLAGS) -I /usr/include/boost -L /usr/lib -lwiringPi -lrtmidi -lrt -lpthread -lboost_system -lboost_thread -o ../bin/run_ping_logger PigmiLogger.o PingSender.o run_ping_logger.cpp
+
 PingSender.o: PingSender.cpp PingSender.hpp
 	$(CC) $(CFLAGS) -c PingSender.cpp -I /usr/include/boost -L /usr/lib -lboost_system -lpthread -lboost_thread
 
